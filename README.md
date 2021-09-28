@@ -1,11 +1,13 @@
 # RBS Formatter
 
+very simple formatter for [ruby/rbs](https://github.com/ruby/rbs)
+
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'rbs_formatter'
+gem 'rbs_formatter', git: 'https://github.com/shoma07/rbs_formatter.git'
 ```
 
 And then execute:
@@ -18,7 +20,9 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+$ bundle exec rbs_formatter
+```
 
 ## Development
 
