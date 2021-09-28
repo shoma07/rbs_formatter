@@ -2,7 +2,7 @@
 
 require_relative "rbs_formatter/version"
 
-module RbsFormatter
+module RBSFormatter
   class Error < StandardError; end
   # Your code goes here...
 end
