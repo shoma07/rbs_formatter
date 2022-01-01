@@ -16,7 +16,8 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install rbs_formatter
+    $ gem install specific_install
+    $ gem specific_install https://github.com/shoma07/rbs_formatter.git
 
 ## Usage
 

@@ -10,7 +10,7 @@ module RBSFormatter
   class << self
     # @return [void]
     def execute
-      Dir["#{Dir.pwd}/sig/**/*.rbs"].each { |file| format(file) }
+      Dir["#{Dir.pwd}/sig/**/*.rbs"].each { |_1| format(_1) }
     end
 
     private
@@ -18,14 +18,15 @@ module RBSFormatter
     # @param file [String]
     # @return [void]
     def format(file)
-      io = StringIO.new
-      RBS::EnvironmentLoader.new(core_root: nil)
-                            .tap { |loader| loader.add(path: Pathname(file)) }
-                            .then { |loader| RBS::Environment.from_loader(loader) }
-                            .then(&:resolve_type_names)
-                            .then(&:declarations)
-                            .then { |decls| RBS::Writer.new(out: io).write(decls) }
-      File.write(file, io.tap(&:rewind).read)
+      StringIO.new.then do |io|
+        RBS::EnvironmentLoader.new(core_root: nil)
+                              .tap { |_1| _1.add(path: Pathname(file)) }
+                              .then { |_1| RBS::Environment.from_loader(_1) }
+                              .then(&:resolve_type_names)
+                              .then(&:declarations)
+                              .then { |_1| RBS::Writer.new(out: io).write(_1) }
+        File.write(file, io.tap(&:rewind).read)
+      end
     end
   end
 end

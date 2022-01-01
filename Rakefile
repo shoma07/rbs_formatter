@@ -6,7 +6,12 @@ require "rspec/core/rake_task"
 RSpec::Core::RakeTask.new(:spec)
 
 require "rubocop/rake_task"
+RuboCop::RakeTask.new(:lint) do |t|
+  t.options = %w[--parallel]
+end
+namespace :lint do
+  desc "Lint fix (Rubocop)"
+  task fix: :auto_correct
+end
 
-RuboCop::RakeTask.new
-
-task default: %i[spec rubocop]
+task default: %i[spec lint]
